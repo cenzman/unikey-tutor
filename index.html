@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Learn to type Vietnamese using Unikey (Telex) input method. Interactive practice with real-time conversion.">
+  <title>Unikey Tutor - Learn Vietnamese Typing</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <h1>🇻🇳 Unikey Tutor</h1>
+      <p>Master Vietnamese Typing with Telex Input Method</p>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <div class="container">
+    <!-- Controls -->
+    <div class="controls">
+      <button id="toggle-cheatsheet" class="btn btn-secondary">Hide Cheatsheet</button>
+      <button id="dark-mode-toggle" class="btn btn-secondary">🌙 Dark Mode</button>
+    </div>
+
+    <!-- Cheatsheet Section -->
+    <section class="cheatsheet">
+      <h3>📚 Unikey (Telex) Cheatsheet</h3>
+      <div class="cheatsheet-content">
+        <div class="cheatsheet-grid">
+          <!-- Vowel Modifications -->
+          <div class="cheatsheet-section">
+            <h4>Vowel Modifications</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>Key Combo</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>â</td><td>aa</td><td class="result">â</td></tr>
+                <tr><td>ă</td><td>aw</td><td class="result">ă</td></tr>
+                <tr><td>ê</td><td>ee</td><td class="result">ê</td></tr>
+                <tr><td>ô</td><td>oo</td><td class="result">ô</td></tr>
+                <tr><td>ơ</td><td>ow</td><td class="result">ơ</td></tr>
+                <tr><td>ư</td><td>uw</td><td class="result">ư</td></tr>
+                <tr><td>đ</td><td>dd</td><td class="result">đ</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Tone Marks -->
+          <div class="cheatsheet-section">
+            <h4>Tone Marks (Dấu)</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Tone</th>
+                  <th>Key</th>
+                  <th>Example</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Sắc (acute)</td><td>s</td><td class="result">as → á</td></tr>
+                <tr><td>Huyền (grave)</td><td>f</td><td class="result">af → à</td></tr>
+                <tr><td>Hỏi (hook above)</td><td>r</td><td class="result">ar → ả</td></tr>
+                <tr><td>Ngã (tilde)</td><td>x</td><td class="result">ax → ã</td></tr>
+                <tr><td>Nặng (dot below)</td><td>j</td><td class="result">aj → ạ</td></tr>
+                <tr><td>Remove tone</td><td>z</td><td class="result">áz → a</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Welcome Screen -->
+    <div id="welcome-screen">
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="practice">Free Practice</button>
+        <button class="tab-btn" data-tab="exercises">Guided Exercises</button>
+      </div>
+
+      <!-- Free Practice Tab -->
+      <div id="practice-tab" class="tab-content active">
+        <section class="practice-section">
+          <h3>✍️ Free Practice Area</h3>
+          <p style="margin-bottom: 15px; color: var(--text-secondary);">
+            Type freely and watch the Telex input method convert your keystrokes to Vietnamese characters in real-time!
+          </p>
+          <textarea 
+            id="practice-area" 
+            placeholder="Start typing... Try: chaof (chào), teeesng Vieetj (tiếng Việt), carm own (cảm ơn)"
+          ></textarea>
+        </section>
+      </div>
+
+      <!-- Exercises Tab -->
+      <div id="exercises-tab" class="tab-content">
+        <section class="exercises-section">
+          <h3>📖 Guided Practice Exercises</h3>
+          <p style="margin-bottom: 20px; color: var(--text-secondary);">
+            Choose your difficulty level and start practicing with structured exercises!
+          </p>
+          <div class="level-selection">
+            <button class="level-btn" data-level="beginner">
+              <div>🌱 Beginner</div>
+              <div class="level-description">Individual vowels and tones</div>
+            </button>
+            <button class="level-btn" data-level="intermediate">
+              <div>🌿 Intermediate</div>
+              <div class="level-description">Common Vietnamese words</div>
+            </button>
+            <button class="level-btn" data-level="advanced">
+              <div>🌳 Advanced</div>
+              <div class="level-description">Full sentences and phrases</div>
+            </button>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Exercise Section (Initially Hidden) -->
+    <div id="exercise-section">
+      <!-- Exercise Header -->
+      <div class="exercise-header">
+        <div class="progress-info">
+          <span id="exercise-progress">Exercise 1 of 10</span>
+          <button id="back-to-menu" class="btn btn-secondary">← Back to Menu</button>
+        </div>
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Exercise Content -->
+      <div class="exercise-content">
+        <!-- Target Display -->
+        <div class="target-display">
+          <h3>Type This:</h3>
+          <div id="target-text">â</div>
+          <div id="exercise-description">Type: aa</div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+          <input 
+            type="text" 
+            id="exercise-input" 
+            placeholder="Type here..."
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </div>
+
+        <!-- Comparison Display -->
+        <div id="comparison" class="comparison">
+          <!-- Character-by-character comparison will be displayed here -->
+        </div>
+
+        <!-- Accuracy Display -->
+        <div id="accuracy-display" class="accuracy">0%</div>
+
+        <!-- Navigation Buttons -->
+        <div class="exercise-actions">
+          <button id="skip-btn" class="btn btn-secondary">Skip →</button>
+          <button id="next-btn" class="btn btn-primary" disabled>Next Exercise →</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exercise Feedback (Popup) -->
+    <div id="exercise-feedback" class="feedback-hide"></div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/telex.js"></script>
+  <script src="js/exercises.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
