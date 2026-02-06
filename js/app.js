@@ -192,7 +192,9 @@ class UniKeyTutorApp {
       completed: true
     });
     
-    this.stats.correctChars += exercise.target.length * (accuracy / 100);
+    // Since completeExercise is only called when userInput === target,
+    // accuracy is always 100%, so we count all characters as correct
+    this.stats.correctChars += exercise.target.length;
     this.stats.totalChars += exercise.target.length;
     this.stats.totalAttempts++;
     

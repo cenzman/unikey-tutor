@@ -138,8 +138,12 @@ class TelexEngine {
         const tone = this.toneKeys[lastChar];
         
         // Find the vowel to apply tone to (scan backwards in the current word)
+        // Extract text before cursor (excluding the tone key)
         const beforeCursor = transformed.slice(0, newCursorPos - 1);
-        const wordStart = Math.max(0, beforeCursor.search(/\s[^\s]*$/) + 1);
+        // Find the start of the current word by searching for the last whitespace
+        // search() returns -1 if no match, so Math.max ensures we get 0 for start of text
+        const lastSpaceIndex = beforeCursor.search(/\s[^\s]*$/);
+        const wordStart = lastSpaceIndex === -1 ? 0 : lastSpaceIndex + 1;
         const currentWord = beforeCursor.slice(wordStart);
         
         // Find the main vowel to apply tone
